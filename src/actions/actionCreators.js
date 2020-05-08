@@ -30,7 +30,7 @@ export function loadEntries (entries, {entryId, contentTypeId, contentTypeChange
   return {
     type: 'FETCH_ENTRIES',
     payload: entriesService.loadEntries(entries, {entryId, contentTypeId, contentTypeChanged}).then((payload) => {
-      const path = `/entries/${entryId || ''}?content_type=${contentTypeId}&access_token=<ACCESSTOKEN>&locale=nl-BE`
+      const path = `/entries/${entryId || ''}?content_type=${contentTypeId}&access_token=<ACCESSTOKEN>`
       const url = getRawRequestUrl(path)
       store.dispatch(appendRequest(url, path, payload))
       return payload
@@ -61,6 +61,6 @@ function getRawRequestUrl (path) {
   const {space, selectedApi} = store.getState().api
   const accessToken = selectedApi === 'preview' ? store.getState().api.previewAccessToken : store.getState().api.deliveryAccessToken
   let host = selectedApi === 'preview' ? '//preview.contentful.com' : '//cdn.contentful.com'
-  let url = 'https:' + host + `/spaces/${space}${path}`.replace(/<ACCESSTOKEN>/i, accessToken)
+  let url = 'https:' + host + `/spaces/${space}${path}`.replace(/<ACCESSTOKEN>/i, accessToken) + `&locale=nl-BE`
   return url
 }
