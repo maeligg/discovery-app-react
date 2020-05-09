@@ -1,3 +1,7 @@
+# Important notice regarding the language
+
+This version of the discovery app only displays entries and content types in Belgian Dutch (nl-BE)
+
 # Deprecation notice 
 
 This repository is deprecated and no further maintenance is planned.For a Reference example app, please see [https://github.com/contentful/the-example-app.nodejs](https://github.com/contentful/the-example-app.nodejs)
